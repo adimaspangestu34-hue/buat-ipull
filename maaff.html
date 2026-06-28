@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu: Maaf ya...</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a4a4a;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #ff5c8a;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        /* Desain Tombol Putar Suara */
+        .audio-btn {
+            background-color: #ff769f;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 118, 159, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .audio-btn:hover {
+            background-color: #ff5c8a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 92, 138, 0.6);
+        }
+
+        .audio-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .heart {
+            color: #ff5c8a;
+            font-size: 20px;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <!-- Mengambil font estetik dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hai Ipullll, Dengerinn ini ya... 🥺</h1>
+        <p>Jidan mau ngomong nih, jidan ngerasa salahh sama ipull. Karena lewat chat kadang rasanye kurang tersampaikan, jidan rekam suara ini khusus buat ipulll. jadi didengerin nyak pull?</p>
+        
+        <!-- Tombol Suara -->
+        <button class="audio-btn" id="playBtn">
+            <span>▶</span> Putall yaa
+        </button>
+
+        <!-- Elemen Audio Tersembunyi -->
+        <!-- Ganti 'rekaman-maaf.mp3' dengan nama file suaramu nanti -->
+        <audio id="myAudio" src="buat ipul.mp3"></audio>
+
+        <div class="heart">❤️</div>
+    </div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const audio = document.getElementById('myAudio');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                audio.play();
+                playBtn.innerHTML = '<span>⏸</span> Jeda Suara';
+                isPlaying = true;
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<span>▶</span> Putar Suara';
+                isPlaying = false;
+            }
+        });
+
+        // Kembalikan tombol ke awal jika audio selesai diputar
+        audio.addEventListener('ended', () => {
+            playBtn.innerHTML = '<span>▶</span> Putar Suara';
+            isPlaying = false;
+        });
+    </script>
+
+</body>
+</html>
